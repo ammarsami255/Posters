@@ -15,7 +15,7 @@
         }
 
         body {
-            background: url('https://thumbs.dreamstime.com/b/dramatic-american-football-field-vibrant-green-grass-stripes-sports-background-image-highimpact-design-capture-353101266.jpg') no-repeat center/cover fixed; /* Actual football field background */
+            background: url('https://thumbs.dreamstime.com/b/soccer-field-rich-green-grass-white-lines-ready-play-empty-football-stadium-seats-under-bright-sun-blue-sky-trees-422046783.jpg') no-repeat center/cover fixed; /* Updated soccer field background */
             color: #333;
             line-height: 1.6;
             overflow-x: hidden;
@@ -29,7 +29,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.8); /* White overlay for readability on football field background */
+            background: rgba(255, 255, 255, 0.8); /* White overlay for readability */
             z-index: -1;
         }
 
@@ -79,7 +79,7 @@
         }
 
         .hero {
-            background: url('https://images.pexels.com/photos/13069970/pexels-photo-13069970.jpeg?cs=srgb&dl=pexels-carlos-jamaica-173742194-13069970.jpg&fm=jpg') no-repeat center/cover; /* Actual football stadium hero */
+            background: url('https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,h_1200,q_75,w_1200/v1/clients/addisontx/Visit_Addison_Website_Heroes_5__13cfefc2-c8dc-4a6f-a060-cdabf186eb4e.jpg') no-repeat center/cover; /* Updated epic stadium hero with confetti */
             height: 450px;
             display: flex;
             align-items: center;
@@ -132,8 +132,9 @@
 
         .product-card img {
             width: 100%;
-            height: 220px;
-            object-fit: cover;
+            height: auto;
+            max-height: 220px;
+            object-fit: contain; /* Changed to contain to avoid cropping */
             border-bottom: 5px solid #d32f2f; /* Red border for football theme */
         }
 
@@ -205,7 +206,7 @@
             }
 
             .product-card img {
-                height: 180px;
+                max-height: 180px;
             }
 
             .product-info {
@@ -240,7 +241,7 @@
             }
 
             .product-card img {
-                height: 150px;
+                max-height: 150px;
             }
         }
 
@@ -267,7 +268,7 @@
 
         <section class="products">
             <div class="product-card">
-                <img src="https://i.etsystatic.com/37288244/r/il/402854/5167054825/il_fullxfull.5167054825_5fxe.jpg" alt="Messi Legend Poster in Stadium"> <!-- Actual Messi poster image -->
+                <img src="https://m.media-amazon.com/images/I/71sJsyVeuTL._AC_SL1500_.jpg" alt="Messi Legend Poster in Stadium"> <!-- Updated Messi poster mockup -->
                 <div class="product-info">
                     <h3>Messi Legend Poster</h3>
                     <p>$19.99</p>
@@ -276,7 +277,7 @@
             </div>
 
             <div class="product-card">
-                <img src="https://i.ytimg.com/vi/CwFJbd2hPwk/maxresdefault.jpg" alt="Ronaldo Icon Poster in Stadium"> <!-- Actual Ronaldo poster image -->
+                <img src="https://i.pinimg.com/736x/e4/a5/a2/e4a5a2fe80dd8e8ccbe8d03d0a113324.jpg" alt="Ronaldo Icon Poster in Stadium"> <!-- Updated Ronaldo poster in stadium -->
                 <div class="product-info">
                     <h3>Ronaldo Icon Poster</h3>
                     <p>$24.99</p>
@@ -285,7 +286,7 @@
             </div>
 
             <div class="product-card">
-                <img src="https://thumbs.dreamstime.com/b/football-match-world-championship-stadium-d-vector-background-soccer-poster-template-football-match-world-championship-stadium-d-120635127.jpg" alt="World Cup Glory Poster in Stadium"> <!-- Actual World Cup poster image -->
+                <img src="https://flyerheroes.com/wp-content/uploads/edd/2014/06/Worldcup-Flyer-Template-2-21.jpg" alt="World Cup Glory Poster in Stadium"> <!-- Updated World Cup poster -->
                 <div class="product-info">
                     <h3>World Cup Glory Poster</h3>
                     <p>$29.99</p>
