@@ -53,6 +53,7 @@
             display: flex;
             justify-content: center;
             gap: 20px;
+            flex-wrap: wrap; /* Allow nav to wrap on small screens */
         }
 
         nav ul li a {
@@ -104,6 +105,8 @@
         .hero h2 {
             font-size: 3.5em;
             z-index: 1;
+            text-align: center;
+            padding: 0 20px; /* Padding for small screens */
         }
 
         /* Product Grid */
@@ -175,6 +178,70 @@
             text-align: center;
             padding: 20px;
             margin-top: 40px;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero {
+                height: 300px;
+            }
+
+            .hero h2 {
+                font-size: 2.5em;
+            }
+
+            .products {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            .product-card img {
+                height: 180px;
+            }
+
+            .product-info {
+                padding: 15px;
+            }
+
+            .buy-btn {
+                padding: 10px 20px;
+            }
+
+            main {
+                padding: 15px;
+                margin: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            .hero {
+                height: 250px;
+            }
+
+            .hero h2 {
+                font-size: 2em;
+            }
+
+            .products {
+                grid-template-columns: 1fr; /* Single column on very small screens */
+            }
+
+            .product-card img {
+                height: 150px;
+            }
         }
 
         /* Removed CSS keyframes as we'll use GSAP */
