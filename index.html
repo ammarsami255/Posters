@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Posters - Modern Online Store</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <style>
+        /* Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: url('https://thumbs.dreamstime.com/b/dramatic-american-football-field-vibrant-green-grass-stripes-sports-background-image-highimpact-design-capture-353101266.jpg') no-repeat center/cover fixed; /* Actual football field background */
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8); /* White overlay for readability on football field background */
+            z-index: -1;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #d32f2f, #f44336); /* Red gradient */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        /* Main Content Styles */
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9); /* Semi-transparent white for content over field */
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .hero {
+            background: url('https://images.pexels.com/photos/13069970/pexels-photo-13069970.jpeg?cs=srgb&dl=pexels-carlos-jamaica-173742194-13069970.jpg&fm=jpg') no-repeat center/cover; /* Actual football stadium hero */
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            margin-bottom: 40px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, rgba(211, 47, 47, 0.8), transparent); /* Red fade for modern touch */
+        }
+
+        .hero h2 {
+            font-size: 3.5em;
+            z-index: 1;
+        }
+
+        /* Product Grid */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) rotate(2deg);
+            box-shadow: 0 12px 24px rgba(211, 47, 47, 0.3); /* Red shadow on hover */
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 5px solid #d32f2f; /* Red border for football theme */
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #d32f2f; /* Red titles */
+        }
+
+        .product-info p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .buy-btn {
+            background: #d32f2f; /* Red button */
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+            font-weight: bold;
+        }
+
+        .buy-btn:hover {
+            background: #b71c1c; /* Darker red */
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, #d32f2f, #f44336); /* Red gradient */
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* Removed CSS keyframes as we'll use GSAP */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Football Posters Arena</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Epic Football Posters in the Playground</h2>
+        </section>
+
+        <section class="products">
+            <div class="product-card">
+                <img src="https://i.etsystatic.com/37288244/r/il/402854/5167054825/il_fullxfull.5167054825_5fxe.jpg" alt="Messi Legend Poster in Stadium"> <!-- Actual Messi poster image -->
+                <div class="product-info">
+                    <h3>Messi Legend Poster</h3>
+                    <p>$19.99</p>
+                    <button class="buy-btn" onclick="addToCart('Messi Legend Poster')">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://i.ytimg.com/vi/CwFJbd2hPwk/maxresdefault.jpg" alt="Ronaldo Icon Poster in Stadium"> <!-- Actual Ronaldo poster image -->
+                <div class="product-info">
+                    <h3>Ronaldo Icon Poster</h3>
+                    <p>$24.99</p>
+                    <button class="buy-btn" onclick="addToCart('Ronaldo Icon Poster')">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://thumbs.dreamstime.com/b/football-match-world-championship-stadium-d-vector-background-soccer-poster-template-football-match-world-championship-stadium-d-120635127.jpg" alt="World Cup Glory Poster in Stadium"> <!-- Actual World Cup poster image -->
+                <div class="product-info">
+                    <h3>World Cup Glory Poster</h3>
+                    <p>$29.99</p>
+                    <button class="buy-btn" onclick="addToCart('World Cup Glory Poster')">Buy Now</button>
+                </div>
+            </div>
+
+            <!-- Add more product cards as needed -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Football Posters Arena. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // GSAP Animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Header animation
+            gsap.from('header h1', { y: -100, opacity: 0, duration: 1, ease: 'power3.out' });
+            gsap.from('nav ul li', { y: -50, opacity: 0, duration: 0.8, stagger: 0.2, ease: 'bounce.out' });
+
+            // Hero animation
+            gsap.from('.hero', { scale: 1.3, opacity: 0, duration: 1.5, ease: 'power2.inOut' });
+            gsap.from('.hero h2', { scale: 0.8, opacity: 0, duration: 1, delay: 0.5, ease: 'elastic.out(1, 0.3)' });
+            gsap.to('.hero::after', { x: -10, duration: 2, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+
+            // Product cards staggered animation
+            gsap.from('.product-card', {
+                y: 100,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.2,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.products',
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+
+            // Hover effects with GSAP (enhance CSS hovers)
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    gsap.to(card.querySelector('img'), { scale: 1.15, rotation: -2, duration: 0.6, ease: 'power2.out' });
+                });
+                card.addEventListener('mouseleave', () => {
+                    gsap.to(card.querySelector('img'), { scale: 1, rotation: 0, duration: 0.6, ease: 'power2.out' });
+                });
+            });
+
+            // Parallax for hero
+            window.addEventListener('scroll', () => {
+                const scrollPos = window.scrollY;
+                gsap.to('.hero', { backgroundPositionY: `${scrollPos * 0.5}px`, ease: 'none' });
+            });
+        });
+
+        // Enhanced JavaScript for interactivity
+        function addToCart(productName) {
+            alert(`Added ${productName} to your cart! Let's score!`);
+            // In a real app, this would update a cart system
+        }
+    </script>
+</body>
+</html>
