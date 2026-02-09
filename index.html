@@ -1,355 +1,511 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football Posters - Modern Online Store</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <style>
-        /* Reset and Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
+    <title>ULTRA XI | The Tactical Collection</title>
+<style>
+    :root {
+    --red: #E63946;
+    --blue: #1D3557;
+    --light-blue: #457B9D;
+    --white: #F1FAEE;
+    --black: #0B0C10;
+    --grass-dark: #121F16;
+}
 
-        body {
-            background: url('https://thumbs.dreamstime.com/b/soccer-field-rich-green-grass-white-lines-ready-play-empty-football-stadium-seats-under-bright-sun-blue-sky-trees-422046783.jpg') no-repeat center/cover fixed; /* Updated soccer field background */
-            color: #333;
-            line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.8); /* White overlay for readability */
-            z-index: -1;
-        }
+body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
 
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, #d32f2f, #f44336); /* Red gradient */
-            color: white;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
+/* Header & Nav */
+.main-header {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1504450758481-7338eba7524a?q=80&w=1920') no-repeat center/cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
+.glass-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 25px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap; /* Allow nav to wrap on small screens */
-        }
+.logo {
+    font-family: 'Syncopate';
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
 
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s, transform 0.3s;
-        }
+.logo span {
+    color: var(--red);
+}
 
-        nav ul li a:hover {
-            color: #fff;
-            transform: scale(1.1);
-        }
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
 
-        /* Main Content Styles */
-        main {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.9); /* Semi-transparent white for content over field */
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        }
+.cart-pill {
+    background: var(--red);
+    padding: 5px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0.8rem;
+}
 
-        .hero {
-            background: url('https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,h_1200,q_75,w_1200/v1/clients/addisontx/Visit_Addison_Website_Heroes_5__13cfefc2-c8dc-4a6f-a060-cdabf186eb4e.jpg') no-repeat center/cover; /* Updated epic stadium hero with confetti */
-            height: 450px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-            margin-bottom: 40px;
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
-        }
+.hero-content {
+    text-align: center;
+}
 
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -50px;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(to top, rgba(211, 47, 47, 0.8), transparent); /* Red fade for modern touch */
-        }
+.glitch-text {
+    font-family: 'Syncopate';
+    font-size: 6vw;
+    margin-bottom: 20px;
+}
 
-        .hero h2 {
-            font-size: 3.5em;
-            z-index: 1;
-            text-align: center;
-            padding: 0 20px; /* Padding for small screens */
-        }
+.glitch-text span {
+    -webkit-text-stroke: 1px var(--white);
+    color: transparent;
+}
 
-        /* Product Grid */
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
+.cta-group {
+    margin-top: 40px;
+}
 
-        .product-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s;
-            position: relative;
-        }
+.primary-btn {
+    background: var(--red);
+    color: white;
+    padding: 15px 40px;
+    text-decoration: none;
+    font-weight: 900;
+    margin-right: 15px;
+    border-radius: 4px;
+}
 
-        .product-card:hover {
-            transform: translateY(-15px) rotate(2deg);
-            box-shadow: 0 12px 24px rgba(211, 47, 47, 0.3); /* Red shadow on hover */
-        }
+.secondary-btn {
+    border: 1px solid var(--white);
+    color: white;
+    padding: 15px 40px;
+    text-decoration: none;
+    font-weight: 900;
+    border-radius: 4px;
+}
 
-        .product-card img {
-            width: 100%;
-            height: auto;
-            max-height: 220px;
-            object-fit: contain; /* Changed to contain to avoid cropping */
-            border-bottom: 5px solid #d32f2f; /* Red border for football theme */
-        }
+/* The Pitch Area */
+.pitch-container {
+    padding: 100px 20px;
+    background: radial-gradient(circle, #1a1a1a, #000);
+}
 
-        .product-info {
-            padding: 20px;
-            text-align: center;
-        }
+.pitch-marking {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--grass-dark);
+    border: 3px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
 
-        .product-info h3 {
-            font-size: 1.3em;
-            margin-bottom: 10px;
-            color: #d32f2f; /* Red titles */
-        }
+.formation-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
 
-        .product-info p {
-            font-size: 1.1em;
-            color: #555;
-            margin-bottom: 15px;
-        }
+/* Poster Cards */
+.poster-card {
+    width: 200px;
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
 
-        .buy-btn {
-            background: #d32f2f; /* Red button */
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
-            font-weight: bold;
-        }
+.poster-card:hover {
+    border-color: var(--red);
+    transform: translateY(-10px);
+}
 
-        .buy-btn:hover {
-            background: #b71c1c; /* Darker red */
-            transform: scale(1.1);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
+.image-wrapper {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+}
 
-        /* Footer Styles */
-        footer {
-            background: linear-gradient(135deg, #d32f2f, #f44336); /* Red gradient */
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-        }
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
 
-        /* Media Queries for Responsiveness */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
+.poster-card:hover img {
+    transform: scale(1.1);
+}
 
-            nav ul {
-                flex-direction: column;
-                gap: 10px;
-            }
+.card-body {
+    padding: 15px;
+    border-top: 2px solid var(--blue);
+}
 
-            .hero {
-                height: 300px;
-            }
+.card-body h3 {
+    font-family: 'Syncopate';
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
 
-            .hero h2 {
-                font-size: 2.5em;
-            }
+.card-body p {
+    font-size: 0.65rem;
+    color: #888;
+    letter-spacing: 1px;
+}
 
-            .products {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 20px;
-            }
+.gk-card {
+    border-bottom: 4px solid var(--red);
+}
 
-            .product-card img {
-                max-height: 180px;
-            }
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
 
-            .product-info {
-                padding: 15px;
-            }
+.modal-content {
+    background: #111;
+    width: 90%;
+    max-width: 900px;
+    padding: 50px;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
 
-            .buy-btn {
-                padding: 10px 20px;
-            }
+.modal-flex {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
 
-            main {
-                padding: 15px;
-                margin: 15px;
-            }
-        }
+.modal-preview { 
+    height: 450px; 
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.5), 0 20px 40px rgba(0,0,0,0.5);
+    background-color: #1a1a1a; /* Fallback color */
+}
 
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.5em;
-            }
+.m-tag {
+    color: var(--red);
+    font-weight: 700;
+    font-size: 0.7rem;
+}
 
-            .hero {
-                height: 250px;
-            }
+.price-tag {
+    font-size: 2rem;
+    font-weight: 900;
+    margin: 10px 0;
+}
 
-            .hero h2 {
-                font-size: 2em;
-            }
+.specs {
+    margin: 20px 0;
+    list-style: none;
+    font-size: 0.8rem;
+    color: #aaa;
+}
 
-            .products {
-                grid-template-columns: 1fr; /* Single column on very small screens */
-            }
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
 
-            .product-card img {
-                max-height: 150px;
-            }
-        }
+.buy-btn {
+    width: 100%;
+    background: var(--white);
+    color: var(--black);
+    padding: 18px;
+    border: none;
+    font-weight: 900;
+    cursor: pointer;
+    margin-top: 20px;
+}
 
-        /* Removed CSS keyframes as we'll use GSAP */
-    </style>
+@media (max-width: 768px) {
+    .modal-flex {
+        grid-template-columns: 1fr;
+    }
+
+    .poster-card {
+        width: 40%;
+    }
+}
+</style>    <link
+        href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;700;900&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
-    <header>
-        <h1>Football Posters Arena</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Shop</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+
+    <header class="main-header">
+        <nav class="glass-nav">
+            <div class="logo">ULTRA<span>XI</span></div>
+            <div class="nav-links">
+                <a href="#pitch">THE LINEUP</a>
+                <a href="#">ARCHIVE</a>
+                <div class="cart-pill">CART <span id="cart-count">0</span></div>
+            </div>
         </nav>
+
+        <div class="hero-content">
+            <h1 class="glitch-text">ELITE <span>AESTHETICS</span></h1>
+            <p>11 Iconic Players. 11 Museum Prints. The 4-4-2 Tactical Drop.</p>
+            <div class="cta-group">
+                <a href="#pitch" class="primary-btn">VIEW FORMATION</a>
+                <a href="#" class="secondary-btn">EXPLORE SIZES</a>
+            </div>
+        </div>
     </header>
+<section class="pitch-container" id="pitch">
+    <div class="pitch-marking">
 
-    <main>
-        <section class="hero">
-            <h2>Epic Football Posters in the Playground</h2>
-        </section>
-
-        <section class="products">
-            <div class="product-card">
-                <img src="https://m.media-amazon.com/images/I/71sJsyVeuTL._AC_SL1500_.jpg" alt="Messi Legend Poster in Stadium"> <!-- Updated Messi poster mockup -->
-                <div class="product-info">
-                    <h3>Messi Legend Poster</h3>
-                    <p>$19.99</p>
-                    <button class="buy-btn" onclick="addToCart('Messi Legend Poster')">Buy Now</button>
+        <!-- STRIKERS -->
+        <div class="formation-row">
+            <div class="poster-card red-theme" data-name="STRIKER" data-price="$55" data-desc='LTD. EDITION "GLORY"'>
+                <div class="image-wrapper">
+                    <img src="https://cdn.dribbble.com/userupload/10513010/file/original-26e755d89b149dd8eea9336921896191.png?resize=752x&vertical=center" alt="Striker">
+                </div>
+                <div class="card-body">
+                    <h3>STRIKER</h3>
+                    <p>LTD. EDITION "GLORY"</p>
                 </div>
             </div>
 
-            <div class="product-card">
-                <img src="https://i.pinimg.com/736x/e4/a5/a2/e4a5a2fe80dd8e8ccbe8d03d0a113324.jpg" alt="Ronaldo Icon Poster in Stadium"> <!-- Updated Ronaldo poster in stadium -->
-                <div class="product-info">
-                    <h3>Ronaldo Icon Poster</h3>
-                    <p>$24.99</p>
-                    <button class="buy-btn" onclick="addToCart('Ronaldo Icon Poster')">Buy Now</button>
+            <div class="poster-card blue-theme" data-name="SECOND STRIKER" data-price="$55" data-desc='LTD. EDITION "SILENCE"'>
+                <div class="image-wrapper">
+                    <img src="https://rukminim2.flixcart.com/image/3072/3072/xif0q/poster/t/r/3/medium-football-super-star-soccer-legend-cristiano-ronaldo-cr7-original-imagz8y7te9xcnpx.jpeg?q=90" alt="Second Striker">
+                </div>
+                <div class="card-body">
+                    <h3>SECOND STRIKER</h3>
+                    <p>LTD. EDITION "SILENCE"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- MIDFIELD -->
+        <div class="formation-row">
+            <div class="poster-card" data-name="LW" data-price="$55" data-desc="THE PACE">
+                <div class="image-wrapper">
+                    <img src="https://media.printler.com/media/photo/134188.jpg?rmode=crop&width=725&height=1024" alt="Left Wing">
+                </div>
+                <div class="card-body">
+                    <h3>LW</h3>
+                    <p>THE PACE</p>
                 </div>
             </div>
 
-            <div class="product-card">
-                <img src="https://flyerheroes.com/wp-content/uploads/edd/2014/06/Worldcup-Flyer-Template-2-21.jpg" alt="World Cup Glory Poster in Stadium"> <!-- Updated World Cup poster -->
-                <div class="product-info">
-                    <h3>World Cup Glory Poster</h3>
-                    <p>$29.99</p>
-                    <button class="buy-btn" onclick="addToCart('World Cup Glory Poster')">Buy Now</button>
+            <div class="poster-card" data-name="CM" data-price="$55" data-desc="THE ENGINE">
+                <div class="image-wrapper">
+                    <img src="https://m.media-amazon.com/images/I/61aTxaPeYuL._AC_SL500_.jpg" alt="Central Midfielder">
+                </div>
+                <div class="card-body">
+                    <h3>CM</h3>
+                    <p>THE ENGINE</p>
                 </div>
             </div>
 
-            <!-- Add more product cards as needed -->
-        </section>
-    </main>
+            <div class="poster-card" data-name="CM" data-price="$55" data-desc="THE VISION">
+                <div class="image-wrapper">
+                    <img src="https://media.s-bol.com/rx6lVMEYR8y4/9rwkQpB/550x785.jpg" alt="Playmaker">
+                </div>
+                <div class="card-body">
+                    <h3>CM</h3>
+                    <p>THE VISION</p>
+                </div>
+            </div>
 
-    <footer>
-        <p>&copy; 2026 Football Posters Arena. All rights reserved.</p>
-    </footer>
+            <div class="poster-card" data-name="RW" data-price="$55" data-desc="THE CROSS">
+                <div class="image-wrapper">
+                    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/hd/95c595127041473.6139ba9f0b81c.jpg" alt="Right Wing">
+                </div>
+                <div class="card-body">
+                    <h3>RW</h3>
+                    <p>THE CROSS</p>
+                </div>
+            </div>
+        </div>
 
-    <script>
-        // GSAP Animations
-        document.addEventListener('DOMContentLoaded', () => {
-            // Header animation
-            gsap.from('header h1', { y: -100, opacity: 0, duration: 1, ease: 'power3.out' });
-            gsap.from('nav ul li', { y: -50, opacity: 0, duration: 0.8, stagger: 0.2, ease: 'bounce.out' });
+        <!-- DEFENSE -->
+        <div class="formation-row">
+            <div class="poster-card" data-name="LB" data-price="$55" data-desc="OVERLAP">
+                <div class="image-wrapper">
+                    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/8dbdd497471057.5ec5aad0cbb6f.jpg" alt="Left Back">
+                </div>
+                <div class="card-body">
+                    <h3>LB</h3>
+                    <p>OVERLAP</p>
+                </div>
+            </div>
 
-            // Hero animation
-            gsap.from('.hero', { scale: 1.3, opacity: 0, duration: 1.5, ease: 'power2.inOut' });
-            gsap.from('.hero h2', { scale: 0.8, opacity: 0, duration: 1, delay: 0.5, ease: 'elastic.out(1, 0.3)' });
-            gsap.to('.hero::after', { x: -10, duration: 2, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+            <div class="poster-card" data-name="CB" data-price="$55" data-desc="COMMANDER">
+                <div class="image-wrapper">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLdBCY4uk5gBI1MUlC_8EgC-Z-wPpojvEO5A&s" alt="Center Back">
+                </div>
+                <div class="card-body">
+                    <h3>CB</h3>
+                    <p>COMMANDER</p>
+                </div>
+            </div>
 
-            // Product cards staggered animation
-            gsap.from('.product-card', {
-                y: 100,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.2,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: '.products',
-                    start: 'top 80%',
-                    toggleActions: 'play none none reverse'
-                }
-            });
+            <div class="poster-card" data-name="CB" data-price="$55" data-desc="THE ROCK">
+                <div class="image-wrapper">
+                    <img src="https://cdn.displate.com/artwork/270x380/2020-07-02/fa320c9acf4e2ab655e692d8f9b7f4b5_942e26d9632355d4db7fef3168924fbc.jpg" alt="Defender">
+                </div>
+                <div class="card-body">
+                    <h3>CB</h3>
+                    <p>THE ROCK</p>
+                </div>
+            </div>
 
-            // Hover effects with GSAP (enhance CSS hovers)
-            document.querySelectorAll('.product-card').forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    gsap.to(card.querySelector('img'), { scale: 1.15, rotation: -2, duration: 0.6, ease: 'power2.out' });
-                });
-                card.addEventListener('mouseleave', () => {
-                    gsap.to(card.querySelector('img'), { scale: 1, rotation: 0, duration: 0.6, ease: 'power2.out' });
-                });
-            });
+            <div class="poster-card" data-name="RB" data-price="$55" data-desc="THE SHIELD">
+                <div class="image-wrapper">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHl6jVOb1GkeT-EcGi6Tgnh6KuaPZjXdN-yQ&s" alt="Right Back">
+                </div>
+                <div class="card-body">
+                    <h3>RB</h3>
+                    <p>THE SHIELD</p>
+                </div>
+            </div>
+        </div>
 
-            // Parallax for hero
-            window.addEventListener('scroll', () => {
-                const scrollPos = window.scrollY;
-                gsap.to('.hero', { backgroundPositionY: `${scrollPos * 0.5}px`, ease: 'none' });
-            });
-        });
+        <!-- GOALKEEPER -->
+        <div class="formation-row">
+            <div class="poster-card gk-card" data-name="GOALKEEPER" data-price="$55" data-desc="THE LAST DEFENSE">
+                <div class="image-wrapper">
+                    <img src="https://www.footballcardsdirect.com/wp-content/uploads/2021/02/MAECL2021-MOTM015.jpg" alt="Goalkeeper">
+                </div>
+                <div class="card-body">
+                    <h3>GOALKEEPER</h3>
+                    <p>THE LAST DEFENSE</p>
+                </div>
+            </div>
+        </div>
 
-        // Enhanced JavaScript for interactivity
-        function addToCart(productName) {
-            alert(`Added ${productName} to your cart! Let's score!`);
-            // In a real app, this would update a cart system
-        }
-    </script>
+    </div>
+</section>
+
+
+
+    <div id="modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <div class="modal-flex">
+                <div class="modal-preview"></div>
+                <div class="modal-text">
+                    <h2 id="m-title"></h2>
+                    <span class="m-tag">MUSEUM QUALITY PRINT</span>
+                    <p id="m-price" class="price-tag"></p>
+                    <p id="m-desc"></p>
+                    <ul class="specs">
+                        <li>• 240gsm Enhanced Matte Paper</li>
+                        <li>• Giclée printing quality</li>
+                        <li>• Ships in protective tube</li>
+                    </ul>
+                    <button class="buy-btn">ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script >// Modal Functionality
+function openModal(name, price, desc, imgSrc) {
+    const modal = document.getElementById('modal');
+    
+    // Update Text
+    document.getElementById('m-title').innerText = name;
+    document.getElementById('m-price').innerText = price;
+    document.getElementById('m-desc').innerText = desc;
+    
+    // Update Image
+    const preview = document.querySelector('.modal-preview');
+    preview.style.backgroundImage = `url('${imgSrc}')`;
+    preview.style.backgroundSize = 'cover';
+    preview.style.backgroundPosition = 'center';
+    
+    modal.style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+}
+
+// Simple Cart Interaction
+let count = 0;
+document.querySelector('.buy-btn').addEventListener('click', () => {
+    count++;
+    document.getElementById('cart-count').innerText = count;
+    closeModal();
+    alert("Added to Tactical Squad!");
+});
+
+// Close on outside click
+window.onclick = function(event) {
+    if (event.target == document.getElementById('modal')) {
+        closeModal();
+    }
+}
+
+document.querySelectorAll('.poster-card').forEach(card => {
+    card.addEventListener('click', () => {
+        const name = card.querySelector('h3')?.innerText || 'Poster';
+        const price = '$55';
+        const desc = card.querySelector('p')?.innerText || '';
+        const imgSrc = card.querySelector('img')?.src || '';
+
+        openModal(name, price, desc, imgSrc);
+    });
+});
+</script>
 </body>
+
 </html>
